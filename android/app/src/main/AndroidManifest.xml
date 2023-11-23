@@ -1,4 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
         android:label="go_secure"
         android:name="${applicationName}"
@@ -29,7 +31,7 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-        <meta-data android:name="google-maps-geocoding.p.rapidapi.com"
-            android:value="ad13f6d195msh57b87bafe39ab03p1e55a4jsn10d843b8b53b"/>
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCbM_He1KW5F-sFSkkmuSVZkYzGpLfS63U"/>
     </application>
 </manifest>

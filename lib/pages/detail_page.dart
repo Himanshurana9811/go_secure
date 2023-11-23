@@ -61,23 +61,21 @@ class _DetailPageState extends State<DetailPage> {
 
   //   addUserDetails(fname, lname, address, age, mobile);
   Future<void> onSubmit() async {
-  String resp = await AddData().saveData(
-    file: _image!,
-    fname: _firstNameController.value.text,
-    lname: _lastNameController.value.text,
-    age: int.parse(_ageController.value.text),
-    address: _addressController.value.text,
-    mobile: int.parse(_mobileController.value.text),
-  );
+    String resp = await AddData().saveData({
+  'fname': _firstNameController.value.text,
+  'lname': _lastNameController.value.text,
+  'age': int.tryParse(_ageController.value.text) ?? 0,
+  'address': _addressController.value.text,
+  'mobile': int.tryParse(_mobileController.value.text) ?? 0,
+});
 
-  // Check the response and handle accordingly
-  if (resp == 'Success') {
-    // Data saved successfully, perform any additional actions
-  } else {
-    // Handle the error, show a message, etc.
-    print('Error: $resp');
-  }
-
+// Check the response and handle accordingly
+if (resp == 'Success') {
+  // Data saved successfully, perform any additional actions
+} else {
+  // Handle the error, show a message, etc.
+  print('Error: $resp');
+}
 
     // show loading circle
     showDialog(
@@ -95,10 +93,9 @@ class _DetailPageState extends State<DetailPage> {
     //   int.parse(_ageController.text.trim()),
     //   int.parse(_mobileController.text.trim()),
     // );
-    
+
     // pop Looading circle
-    if (context.mounted)
-    Navigator.pop(context);
+    if (context.mounted) Navigator.pop(context);
   }
 
   // Future<void> addUserDetails(String firstName, String lastName, String address,
